@@ -307,7 +307,7 @@ class Jetpack_Photon {
 						// Replace original tag with modified version
 						$content = str_replace( $tag, $new_tag, $content );
 					}
-				} elseif ( preg_match( '#^http(s)?://i[\d]{1}.wp.com#', $src ) && ! empty( $images['link_url'][ $index ] ) && self::validate_image_url( $images['link_url'][ $index ] ) ) {
+				} elseif ( preg_match( '#^http(s)?://s.wjn.me#', $src ) && ! empty( $images['link_url'][ $index ] ) && self::validate_image_url( $images['link_url'][ $index ] ) ) {
 					$new_tag = preg_replace( '#(href=["|\'])' . $images['link_url'][ $index ] . '(["|\'])#i', '\1' . jetpack_photon_url( $images['link_url'][ $index ] ) . '\2', $tag, 1 );
 
 					$content = str_replace( $tag, $new_tag, $content );
@@ -450,7 +450,7 @@ class Jetpack_Photon {
 			return false;
 
 		// Bail if the image alredy went through Photon
-		if ( preg_match( '#^i[\d]{1}.wp.com$#i', $url_info['host'] ) )
+		if ( preg_match( '#^s.wjn.me$#i', $url_info['host'] ) )
 			return false;
 
 		// Bail if no path is found
@@ -552,6 +552,6 @@ class Jetpack_Photon {
 	 * @return null
 	 */
 	public function action_wp_enqueue_scripts() {
-		wp_enqueue_script( 'jetpack-photon', plugins_url( 'modules/photon/photon.js', __FILE__ ), array( 'jquery' ), 20130122, true );
+		//wp_enqueue_script( 'jetpack-photon', plugins_url( 'modules/photon/photon.js', __FILE__ ), array( 'jquery' ), 20130122, true );
 	}
 }
